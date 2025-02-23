@@ -13,14 +13,16 @@ class SpectralNet:
         should_use_ae: bool = False,
         should_use_siamese: bool = False,
         is_sparse_graph: bool = False,
-        ae_hiddens: list = [512, 512, 2048, 10],
+        # ae_hiddens: list = [512, 512, 2048, 10],
+        ae_hiddens: list = [512, 512, 2048, 26],
         ae_epochs: int = 40,
         ae_lr: float = 1e-3,
         ae_lr_decay: float = 0.1,
         ae_min_lr: float = 1e-7,
         ae_patience: int = 10,
         ae_batch_size: int = 256,
-        siamese_hiddens: list = [1024, 1024, 512, 10],
+        # siamese_hiddens: list = [1024, 1024, 512, 10],
+        siamese_hiddens: list = [1024, 1024, 512, 26],
         siamese_epochs: int = 30,
         siamese_lr: float = 1e-3,
         siamese_lr_decay: float = 0.1,
@@ -29,7 +31,8 @@ class SpectralNet:
         siamese_n_nbg: int = 2,
         siamese_use_approx: bool = False,
         siamese_batch_size: int = 128,
-        spectral_hiddens: list = [1024, 1024, 512, 10],
+        # spectral_hiddens: list = [1024, 1024, 512, 10],
+        spectral_hiddens: list = [1024, 1024, 512, 26],
         spectral_epochs: int = 30,
         spectral_lr: float = 1e-3,
         spectral_lr_decay: float = 0.1,
@@ -155,7 +158,8 @@ class SpectralNet:
 
     def _validate_spectral_hiddens(self):
         """Validates the number of hidden units in each layer of the Spectral network."""
-
+        print(self.n_clusters)
+        print(self.spectral_hiddens[-1])
         if self.spectral_hiddens[-1] != self.n_clusters:
             raise ValueError(
                 "The number of units in the last layer of spectral_hiddens network must be equal to the number of clusters or components."

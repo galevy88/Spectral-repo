@@ -11,3 +11,4 @@ spectralnet.egg-info
 /src/reduce_twomoons.py
 /src/spectralnet/_reduction.py
 /src/spectralnet/_trainers/weights
+venv_final/

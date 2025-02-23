@@ -9,6 +9,8 @@ from sklearn.datasets import make_moons
 from torchvision import datasets, transforms
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+from datasets import load_dataset
+from torch.utils.data import DataLoader, TensorDataset
 
 
 def load_mnist() -> tuple:
@@ -27,6 +29,25 @@ def load_mnist() -> tuple:
 
     return x_train, y_train, x_test, y_test
 
+def load_emnist_letters(batch_size=64):
+    # Load dataset from Hugging Face
+    dataset = load_dataset("tanganke/emnist_letters")
+
+    # Define transformation
+    tensor_transform = transforms.Compose([
+        transforms.ToTensor(),  # Convert to Tensor
+        transforms.Normalize((0.5,), (0.5,))  # Normalize to [-1,1]
+    ])
+
+    # Process training data
+    x_train = torch.stack([tensor_transform(img) for img in dataset["train"]["image"]])
+    y_train = torch.tensor(dataset["train"]["label"], dtype=torch.long)
+
+    # Process testing data
+    x_test = torch.stack([tensor_transform(img) for img in dataset["test"]["image"]])
+    y_test = torch.tensor(dataset["test"]["label"], dtype=torch.long)
+
+    return x_train, y_train, x_test, y_test
 
 def load_twomoon() -> tuple:
     data, y = make_moons(n_samples=7000, shuffle=True, noise=0.075, random_state=None)
@@ -96,6 +117,9 @@ def load_data(dataset: str) -> tuple:
         x_train, y_train, x_test, y_test = load_twomoon()
     elif dataset == "reuters":
         x_train, y_train, x_test, y_test = load_reuters()
+    elif dataset == "emnist_letters":
+        x_train, y_train, x_test, y_test = load_emnist_letters()
+        print(x_train.shape, y_train.shape, x_test.shape, y_test.shape)
     else:
         try:
             data_path = dataset["dpath"]
