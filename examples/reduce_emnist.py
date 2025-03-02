@@ -8,7 +8,7 @@ from spectralnet import SpectralReduction
 
 
 def main():
-    x_train, x_test, y_train, y_test = load_data("mnist")
+    x_train, x_test, y_train, y_test = load_data("emnist_letters")
     X = torch.cat([x_train, x_test])
 
     if y_train is not None:
@@ -17,14 +17,14 @@ def main():
         y = None
 
     spectralreduction = SpectralReduction(
-        n_components=10,
+        n_components=26,
         should_use_ae=True,
         should_use_siamese=True,
-        spectral_hiddens=[512, 512, 2048, 10],
+        spectral_hiddens=[512, 512, 2048, 26],
     )
 
     X_new = spectralreduction.fit_transform(X)
-    spectralreduction.visualize(X_new, y, n_components=10)
+    spectralreduction.visualize(X_new, y, n_components=26)
 
 
 if __name__ == "__main__":
