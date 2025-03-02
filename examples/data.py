@@ -119,7 +119,6 @@ def load_data(dataset: str) -> tuple:
         x_train, y_train, x_test, y_test = load_reuters()
     elif dataset == "emnist_letters":
         x_train, y_train, x_test, y_test = load_emnist_letters()
-        print(x_train.shape, y_train.shape, x_test.shape, y_test.shape)
     else:
         try:
             data_path = dataset["dpath"]
