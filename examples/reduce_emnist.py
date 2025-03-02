@@ -2,9 +2,7 @@ import torch
 import numpy as np
 
 from data import load_data
-
-from spectralnet import Metrics
-from spectralnet import SpectralReduction
+from src.spectralnet import SpectralReduction
 
 
 def main():

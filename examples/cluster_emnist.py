@@ -3,8 +3,8 @@ import numpy as np
 
 from data import load_data
 
-from spectralnet import Metrics
-from spectralnet import SpectralNet
+from src.spectralnet import Metrics
+from src.spectralnet import SpectralNet
 
 
 def main():

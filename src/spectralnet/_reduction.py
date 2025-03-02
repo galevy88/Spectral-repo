@@ -325,7 +325,7 @@ class SpectralReduction:
 
         plot_laplacian_eigenvectors(V, y)
         cluster_labels = self._get_clusters_by_kmeans(V)
-        acc = Metrics.acc_score(cluster_labels, y.detach().cpu().numpy(), n_clusters=10)
+        acc = Metrics.acc_score(cluster_labels, y.detach().cpu().numpy(), n_clusters=26)
         print("acc with 2 components: ", acc)
 
         if n_components > 1:

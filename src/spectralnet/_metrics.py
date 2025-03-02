@@ -4,7 +4,7 @@ import sklearn.metrics as metrics
 from munkres import Munkres
 from sklearn.metrics import normalized_mutual_info_score as nmi
 
-from spectralnet._utils import *
+from src.spectralnet._utils import *
 
 
 class Metrics:

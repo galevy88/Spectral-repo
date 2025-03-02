@@ -4,7 +4,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, random_split, TensorDataset
 from sklearn.neighbors import kneighbors_graph
 from tqdm import trange
-from spectralnet._utils import *
+from src.spectralnet._utils import *
 from ._trainer import Trainer
 from .._losses import SpectralNetLoss
 from .._models import SpectralNetModel

@@ -158,8 +158,6 @@ class SpectralNet:
 
     def _validate_spectral_hiddens(self):
         """Validates the number of hidden units in each layer of the Spectral network."""
-        print(self.n_clusters)
-        print(self.spectral_hiddens[-1])
         if self.spectral_hiddens[-1] != self.n_clusters:
             raise ValueError(
                 "The number of units in the last layer of spectral_hiddens network must be equal to the number of clusters or components."
