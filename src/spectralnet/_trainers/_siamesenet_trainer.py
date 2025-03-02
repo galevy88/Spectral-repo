@@ -49,7 +49,8 @@ class SiameseTrainer:
         self.architecture = self.siamese_config["hiddens"]
         self.batch_size = self.siamese_config["batch_size"]
         self.use_approx = self.siamese_config["use_approx"]
-        self.weights_path = "spectralnet/_trainers/mnist_weights/siamese_weights1.pth"
+        self.weights_dir = os.path.join(os.getcwd(), "spectralnet", "_trainers", "emnist_weights")
+        self.weights_path = os.path.join(self.weights_dir, "siamese_weights.pth")
 
     def train(self, X: torch.Tensor) -> SiameseNetModel:
         self.X = X.view(X.size(0), -1)
