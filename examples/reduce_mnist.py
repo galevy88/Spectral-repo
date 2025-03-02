@@ -17,14 +17,14 @@ def main():
         y = None
 
     spectralreduction = SpectralReduction(
-        n_components=10,
+        n_components=3,
         should_use_ae=True,
         should_use_siamese=True,
-        spectral_hiddens=[512, 512, 2048, 10],
+        spectral_hiddens=[512, 512, 2048, 3],
     )
 
     X_new = spectralreduction.fit_transform(X)
-    spectralreduction.visualize(X_new, y, n_components=10)
+    spectralreduction.visualize(X_new, y, n_components=2)
 
 
 if __name__ == "__main__":
