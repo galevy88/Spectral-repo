@@ -21,6 +21,7 @@ class AETrainer:
         self.architecture = self.ae_config["hiddens"]
         self.batch_size = self.ae_config["batch_size"]
         self.weights_dir = os.path.join(os.getcwd(), "spectralnet", "_trainers", "emnist_weights")
+        # self.weights_dir = os.path.join(os.getcwd(), "spectralnet", "_trainers", "weights")
         self.weights_path = os.path.join(self.weights_dir, "ae_weights.pth")
         if not os.path.exists(self.weights_dir):
             os.makedirs(self.weights_dir)

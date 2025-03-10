@@ -19,7 +19,7 @@ class AEModel(nn.Module):
                     nn.Sequential(nn.Linear(current_dim, next_dim), nn.ReLU())
                 )
                 current_dim = next_dim
-
+        print(self.encoder)
         last_dim = input_dim
         current_dim = self.architecture[-1]
         for i, layer in enumerate(reversed(self.architecture[:-1])):
@@ -29,6 +29,7 @@ class AEModel(nn.Module):
             )
             current_dim = next_dim
         self.decoder.append(nn.Sequential(nn.Linear(current_dim, last_dim)))
+        print(self.decoder)
 
     def encode(self, x: torch.Tensor) -> torch.Tensor:
         for layer in self.encoder:
