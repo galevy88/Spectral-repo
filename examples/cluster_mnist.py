@@ -20,7 +20,7 @@ def main():
     spectralnet = SpectralNet(
         n_clusters=10,
         should_use_ae=True,
-        should_use_siamese=True,
+        should_use_siamese=False,
     )
     spectralnet.fit(X, y)
     cluster_assignments = spectralnet.predict(X)
