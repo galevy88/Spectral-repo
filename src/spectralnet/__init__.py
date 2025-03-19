@@ -1,5 +1,5 @@
 from ._metrics import Metrics
-from ._cluster_improved import SpectralNet
+from ._cluster import SpectralNet
 from ._reduction import SpectralReduction
 from ._utils import *
 
