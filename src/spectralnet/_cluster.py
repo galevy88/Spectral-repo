@@ -37,7 +37,7 @@ class SpectralNet:
         spectral_lr: float = 1e-3,
         spectral_lr_decay: float = 0.1,
         spectral_min_lr: float = 1e-8,
-        spectral_patience: int = 10,
+        spectral_patience: int = 5,
         spectral_batch_size: int = 1024,
         spectral_n_nbg: int = 30,
         spectral_scale_k: int = 15,
