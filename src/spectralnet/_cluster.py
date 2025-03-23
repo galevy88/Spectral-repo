@@ -1,6 +1,7 @@
 import torch
 import numpy as np
 
+from ._trainers._vae_trainer import VAETrainer
 from ._utils import *
 from sklearn.cluster import KMeans
 from ._trainers import SpectralTrainer, SiameseTrainer, AETrainer
@@ -15,7 +16,7 @@ class SpectralNet:
         is_sparse_graph: bool = False,
         # ae_hiddens: list = [512, 512, 2048, 10],
         ae_hiddens: list = [512, 512, 2048, 128],
-        ae_epochs: int = 40,
+        ae_epochs: int = 20,
         ae_lr: float = 1e-3,
         ae_lr_decay: float = 0.1,
         ae_min_lr: float = 1e-7,
@@ -211,7 +212,7 @@ class SpectralNet:
         }
 
         if self.should_use_ae:
-            self.ae_trainer = AETrainer(config=ae_config, device=self.device)
+            self.ae_trainer = VAETrainer(config=ae_config, device=self.device)
             self.ae_net = self.ae_trainer.train(X)
             X = self.ae_trainer.embed(X)
 
