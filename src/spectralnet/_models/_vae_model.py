@@ -6,6 +6,8 @@ class VAEModel(nn.Module):
     def __init__(self, architecture: dict, input_dim: int):
         super(VAEModel, self).__init__()
         self.architecture = architecture
+        print("VAE Architecture:")
+        print(self.architecture)
         self.encoder = nn.ModuleList()
         self.decoder = nn.ModuleList()
 

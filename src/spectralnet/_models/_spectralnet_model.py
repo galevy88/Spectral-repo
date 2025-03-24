@@ -72,9 +72,18 @@ class SpectralNetModel(nn.Module):
         If `should_update_orth_weights` is set to True, the orthonormalization weights are updated
         using the QR decomposition. The output tensor is returned.
         """
-
+        # print(self.layers)
+        # print('-' * 80)
         for layer in self.layers:
-            x = layer(x)
+            try:
+                print(type(x))
+                x = layer(x)
+            except Exception as e:
+                print(f"Exception: {e}")
+                print(f"Layer: {layer}")
+                print(f"x: {x}")
+                # last_layer = nn.Sequential(nn.Linear(2, 1), nn.LeakyReLU())
+                # x = last_layer(x)
 
         Y_tilde = x
         if should_update_orth_weights:
